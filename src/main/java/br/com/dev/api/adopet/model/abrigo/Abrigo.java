@@ -1,8 +1,10 @@
 package br.com.dev.api.adopet.model.abrigo;
 
+import br.com.dev.api.adopet.dto.abrigo.AbrigoRequestDto;
 import br.com.dev.api.adopet.model.pet.Pet;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,6 +20,13 @@ public class Abrigo {
     private List<Pet> pets;
 
     public Abrigo() {
+    }
+
+    public Abrigo(AbrigoRequestDto dto) {
+        this.nome = dto.nome();
+        this.telefone = dto.telefone();
+        this.email = dto.email();
+        this.pets = new ArrayList<>();
     }
 
     public Long getId() {
