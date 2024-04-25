@@ -13,12 +13,22 @@ import java.util.List;
 @RestControllerAdvice
 public class ExceptionEntityHandler {
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
-    public ResponseEntity handleSQLIntegrityConstraintViolation() {
+    public ResponseEntity<ErrorResponseDto> handleSQLIntegrityConstraintViolation() {
         return ResponseEntity.badRequest().body(new ErrorResponseDto("Informações ja cadastradas na base de dados"));
+    }
+
+    @ExceptionHandler(AbrigoNotFoundException.class)
+    public ResponseEntity handleAbrigoNotFound() {
+        return ResponseEntity.notFound().build();
     }
 
     @ExceptionHandler(TutorNotFoundException.class)
     public ResponseEntity handleTutorNotFound() {
+        return ResponseEntity.notFound().build();
+    }
+
+    @ExceptionHandler(PetNotFoundException.class)
+    public ResponseEntity handlePetNotFound() {
         return ResponseEntity.notFound().build();
     }
 
