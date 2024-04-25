@@ -27,6 +27,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Detalhar Pet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pets/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pets",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -103,6 +123,134 @@
 							"port": "8080",
 							"path": [
 								"tutores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Abrigos",
+			"item": [
+				{
+					"name": "Pets",
+					"item": [
+						{
+							"name": "Listar Pets por Abrigo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/abrigos/1/pets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"abrigos",
+										"1",
+										"pets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastrar Pet",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tipo\": \"CACHORRO\",\r\n    \"nome\": \"SCOOBY\",\r\n    \"raca\": \"Vira-Lata\",\r\n    \"idade\": 1,\r\n    \"cor\": \"Marrom\",\r\n    \"peso\": 3.5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/abrigos/1/pets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"abrigos",
+										"1",
+										"pets"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Listagem Abrigos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/abrigos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"abrigos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Abrigo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"teste\",\r\n    \"telefone\": \"11912345678\",\r\n    \"email\": \"teste@teste.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/abrigos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"abrigos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detalhar Abrigo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/abrigos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"abrigos",
 								"1"
 							]
 						}
