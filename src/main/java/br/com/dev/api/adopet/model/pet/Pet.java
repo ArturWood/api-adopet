@@ -1,5 +1,6 @@
 package br.com.dev.api.adopet.model.pet;
 
+import br.com.dev.api.adopet.dto.pet.PetRequestDto;
 import br.com.dev.api.adopet.model.abrigo.Abrigo;
 import br.com.dev.api.adopet.model.adocao.Adocao;
 import jakarta.persistence.*;
@@ -24,6 +25,17 @@ public class Pet {
     private Adocao adocao;
 
     public Pet() {
+    }
+
+    public Pet(PetRequestDto dto, Abrigo abrigo) {
+        this.tipo = dto.tipo();
+        this.nome = dto.nome();
+        this.raca = dto.raca();
+        this.idade = dto.idade();
+        this.cor = dto.cor();
+        this.peso = dto.peso();
+        this.abrigo = abrigo;
+        this.adotado = false;
     }
 
     public Long getId() {
