@@ -5,6 +5,7 @@ import br.com.dev.api.adopet.dto.tutor.TutorUpdateDto;
 import br.com.dev.api.adopet.model.adocao.Adocao;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class Tutor {
     private String nome;
     private String telefone;
     private String email;
-    @OneToMany(mappedBy = "tutor", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
     private List<Adocao> adocoes;
 
     public Tutor() {
@@ -26,6 +27,7 @@ public class Tutor {
         this.nome = dto.nome();
         this.telefone = dto.telefone();
         this.email = dto.email();
+        this.adocoes = new ArrayList<>();
     }
 
     public Long getId() {
