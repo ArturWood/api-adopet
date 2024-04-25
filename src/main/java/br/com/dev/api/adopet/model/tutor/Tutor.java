@@ -1,5 +1,7 @@
 package br.com.dev.api.adopet.model.tutor;
 
+import br.com.dev.api.adopet.dto.tutor.TutorRequestDto;
+import br.com.dev.api.adopet.dto.tutor.TutorUpdateDto;
 import br.com.dev.api.adopet.model.adocao.Adocao;
 import jakarta.persistence.*;
 
@@ -20,6 +22,12 @@ public class Tutor {
     public Tutor() {
     }
 
+    public Tutor(TutorRequestDto dto) {
+        this.nome = dto.nome();
+        this.telefone = dto.telefone();
+        this.email = dto.email();
+    }
+
     public Long getId() {
         return id;
     }
@@ -38,5 +46,11 @@ public class Tutor {
 
     public List<Adocao> getAdocoes() {
         return adocoes;
+    }
+
+    public void atualizaDados(TutorUpdateDto dto) {
+        this.nome = dto.nome() != null ? dto.nome() : this.nome;
+        this.telefone = dto.telefone() != null ? dto.telefone() : this.telefone;
+        this.email = dto.email() != null ? dto.email() : this.email;
     }
 }
