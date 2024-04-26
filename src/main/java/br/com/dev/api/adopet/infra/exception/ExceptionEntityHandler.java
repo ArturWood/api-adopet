@@ -17,6 +17,11 @@ public class ExceptionEntityHandler {
         return ResponseEntity.badRequest().body(new ErrorResponseDto("Informações ja cadastradas na base de dados"));
     }
 
+    @ExceptionHandler(AdocaoNotFoundException.class)
+    public ResponseEntity handleAdocaoNotFound() {
+        return ResponseEntity.notFound().build();
+    }
+
     @ExceptionHandler(AbrigoNotFoundException.class)
     public ResponseEntity handleAbrigoNotFound() {
         return ResponseEntity.notFound().build();
