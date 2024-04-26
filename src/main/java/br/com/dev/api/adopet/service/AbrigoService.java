@@ -2,6 +2,7 @@ package br.com.dev.api.adopet.service;
 
 import br.com.dev.api.adopet.dto.abrigo.AbrigoPageDto;
 import br.com.dev.api.adopet.dto.abrigo.AbrigoRequestDto;
+import br.com.dev.api.adopet.dto.pet.PetDetailDto;
 import br.com.dev.api.adopet.dto.pet.PetRequestDto;
 import br.com.dev.api.adopet.infra.exception.AbrigoNotFoundException;
 import br.com.dev.api.adopet.model.abrigo.Abrigo;
@@ -41,9 +42,10 @@ public class AbrigoService {
         return this.getAbrigo(id);
     }
 
-    public List<Pet> listarPets(Long id) {
+    public Page<PetDetailDto> listarPets(Long id, Pageable paginacao) {
         Abrigo abrigo = this.getAbrigo(id);
-        return petService.listarPetsPorAbrigo(abrigo);
+        Page<Pet> pets = petService.listarPetsPorAbrigo(abrigo, paginacao);
+        return pets.map(PetDetailDto::new);
     }
 
     @Transactional

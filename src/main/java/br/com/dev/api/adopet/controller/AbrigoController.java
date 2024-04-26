@@ -17,8 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/abrigos")
 public class AbrigoController {
@@ -45,9 +43,9 @@ public class AbrigoController {
     }
 
     @GetMapping("/{id}/pets")
-    public ResponseEntity<List<PetDetailDto>> listarPets(@PathVariable Long id) {
-        List<Pet> pets = abrigoService.listarPets(id);
-        return ResponseEntity.ok(pets.stream().map(PetDetailDto::new).toList());
+    public ResponseEntity<Page<PetDetailDto>> listarPets(@PathVariable Long id, @PageableDefault(size = 15) Pageable paginacao) {
+        Page<PetDetailDto> page = abrigoService.listarPets(id, paginacao);
+        return ResponseEntity.ok(page);
     }
 
     @PostMapping("/{id}/pets")
