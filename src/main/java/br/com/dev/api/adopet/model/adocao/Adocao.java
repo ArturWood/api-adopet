@@ -25,6 +25,15 @@ public class Adocao {
     public Adocao() {
     }
 
+    public Adocao(Pet pet, Tutor tutor, String motivo) {
+        this.data = LocalDateTime.now();
+        this.tutor = tutor;
+        this.pet = pet;
+        this.motivo = motivo;
+        this.status = StatusAdocao.AGUARDANDO_AVALIACAO;
+        this.justificativaStatus = null;
+    }
+
     public Long getId() {
         return id;
     }
@@ -51,5 +60,14 @@ public class Adocao {
 
     public String getJustificativaStatus() {
         return justificativaStatus;
+    }
+
+    public void aprovar() {
+        this.status = StatusAdocao.APROVADO;
+    }
+
+    public void reprovar(String justificativa) {
+        this.status = StatusAdocao.REPROVADO;
+        this.justificativaStatus = justificativa;
     }
 }
